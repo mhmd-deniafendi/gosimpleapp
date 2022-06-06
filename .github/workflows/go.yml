@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 env:
-  PROJECT_ID: ${{secret.PROJECT_ID}}
+  PROJECT_ID: ${{secrets.PROJECT_ID}}
   GKE_CLUSTER: assesment-cluster
   GKE_ZONE: asia-southeast1-a   
 
