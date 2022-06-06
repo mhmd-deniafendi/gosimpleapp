@@ -36,9 +36,9 @@ jobs:
     - name: Get GKE Credentials
       uses: google-github-actions/get-gke-credentials@v0
       with:
-         cluster_name: ${{ env.GKE_CLUSTER }}
-         location: ${{ env.GKE_ZONE }}   
-         project_id: ${{ secrets.PROJECT_ID }}
+         cluster_name: assesment-cluster
+         location: asia-southeast1-a
+         project_id: storied-courier-350802
 
     # - name: Get GKE Credentials
     #   run: |-
