@@ -13,6 +13,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Checkout tools repo
+      uses: actions/checkout@v3
+      with:
+        repository: https://github.com/mhmd-deniafendi/k8s-resources.git
+        path: manifest/
+
     - name: Set up Go
       uses: actions/setup-go@v3
       with:
