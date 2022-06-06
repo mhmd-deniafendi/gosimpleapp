@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pintu-app-deployment
+spec:
+  selector:
+    matchLabels:
+      app: pintu-app-deployment
+  template:
+    metadata:
+      labels:
+        app: pintu-app-deployment
+    spec:
+      containers:
+      - name: pintu-app-deployment
+        image: 14022021/web-application:latest
+        ports:
+        - containerPort: 8080
