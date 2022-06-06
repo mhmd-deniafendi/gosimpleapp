@@ -38,6 +38,7 @@ jobs:
       with:
          cluster_name: ${{ env.GKE_CLUSTER }}
          location: ${{ env.GKE_ZONE }}   
+         project_id: ${{ secrets.PROJECT_ID }}
 
     # - name: Get GKE Credentials
     #   run: |-
