@@ -92,7 +92,7 @@ jobs:
          project_id: ${{ env.PROJECT_ID }}
 
     - name: Deploy to GKE
-      run: kubectl apply -f manifest/ -n pintu-app-dev 
+      run: kubectl apply -f manifest/ -n pintu-dev
 
     # - name: kubectl - Google Cloud GKE cluster.
     #   uses: ameydev/gke-kubectl-action@master
