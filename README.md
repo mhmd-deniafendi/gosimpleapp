@@ -32,7 +32,7 @@
 - Service & ingress: service loadbalancer google
 
 
-## Explenation
+## Explanation
 1. I use this https://github.com/Papagoat/go-bootstrap-boilerplate/tree/master/go-bootstrap/4 repository as a reference 
 2. Create CI/CD
 - I just build, build with this command with dockerfile :
