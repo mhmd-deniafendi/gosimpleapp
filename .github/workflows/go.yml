@@ -67,3 +67,9 @@ jobs:
       with:
         push: true
         tags: 14022021/web-application:latest
+
+    # Deploy to GKE
+    - name: kubectl - Google Cloud GKE cluster.
+      uses: ameydev/gke-kubectl-action@master
+      with:
+        args: apply -f ./manifest/ -n pintu-app-dev    
