@@ -72,9 +72,9 @@ jobs:
     - name: kubectl - Google Cloud GKE cluster.
       uses: ameydev/gke-kubectl-action@master
       env:
-        project_id: ${{ secrets.PROJECT_ID }}
+        project_id: ${{ env.PROJECT_ID }}
         APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         cluster_name: assesment-cluster
         GKE_ZONE: asia-southeast1-a 
       with:
-        args: apply -f ./manifest/ -n pintu-app-dev    
+        args: apply -f manifest/ -n pintu-app-dev    
