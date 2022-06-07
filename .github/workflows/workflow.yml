@@ -24,36 +24,6 @@ jobs:
       with:
         go-version: 1.18
 
-    # Setup to GCP CLI
-    # - name: Setup Google Cloud CLI
-    #   uses: google-github-actions/auth@v0.4.0
-    #   env:
-    #     ACTION_ALLOW_UNSECURE_COMMANDS: true
-    #   with:
-    #     credentials_json: ${{ secrets.GKE_SA_KEY }}   
-
-    # - name: Setup Google Cloud CLI
-    #   uses: google-github-actions/setup-gcloud@94337306dda8180d967a56932ceb4ddcf01edae7
-    #   with:
-    #     service_account_key: ${{ secrets.GKE_SA_KEY }}
-    #     project_id: ${{ secrets.PROJECT_ID }}
-
-    # - name: Configure Docker
-    #   run: |-
-    #     gcloud --quiet auth configure-docker
-
-    # Login to GKE
-    # - name: Get GKE Credentials
-    #   uses: google-github-actions/get-gke-credentials@v0.4.0
-    #   with:
-    #      cluster_name: assesment-cluster
-    #      location: asia-southeast1-a
-    #      project_id: storied-courier-350802
-
-    # - name: Get GKE Credentials
-    #   run: |-
-    #     gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "${{ secrets.PROJECT_ID }}"
-
     # Login to Docker Hub
     - name: Login to DockerHub
       uses: docker/login-action@v2
@@ -61,7 +31,7 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    # Build and PUSH Image  
+    # Build and PUSH Image (dockerhub) 
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
@@ -76,7 +46,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
 
-    # Setup to GCP CLI
+    # Setup ke GCP CLI
     - name: Setup Google Cloud CLI
       uses: google-github-actions/auth@v0.4.0
       env:
@@ -84,6 +54,7 @@ jobs:
       with:
         credentials_json: ${{ secrets.GKE_SA_KEY }}
 
+    # Mengambil credentials GKE
     - name: Get GKE Credentials
       uses: google-github-actions/get-gke-credentials@v0.4.0
       with:
@@ -91,15 +62,7 @@ jobs:
          location: ${{ env.GKE_ZONE }} 
          project_id: ${{ env.PROJECT_ID }}
 
+    # Deploy ke GKE
     - name: Deploy to GKE
       run: kubectl apply -f manifest/ -n pintu-dev
-
-    # - name: kubectl - Google Cloud GKE cluster.
-    #   uses: ameydev/gke-kubectl-action@master
-    #   env:
-    #     project_id: ${{ env.PROJECT_ID }}
-    #     APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-    #     cluster_name: ${{ env.GKE_CLUSTER }}
-    #     GKE_ZONE: ${{ env.GKE_ZONE }} 
-    #   with:
-    #     args: apply -f manifest/ -n pintu-app-dev    
+  
