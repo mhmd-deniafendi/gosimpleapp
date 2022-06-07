@@ -1,4 +1,4 @@
-name: Go
+name: CI/CD Pipeline Go - Google Kubernetes Engine
 
 on:
   push:
@@ -13,7 +13,7 @@ env:
 
 jobs:
 
-  build:
+  Build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -79,7 +79,7 @@ jobs:
       uses: ameydev/gke-kubectl-action@master
       env:
         project_id: ${{ env.PROJECT_ID }}
-        APPLICATION_CREDENTIALS: ${{ secrets.APPLICATION_CREDENTIALS }}
+        APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         cluster_name: ${{ env.GKE_CLUSTER }}
         GKE_ZONE: ${{ env.GKE_ZONE }} 
       with:
