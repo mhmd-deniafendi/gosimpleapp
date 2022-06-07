@@ -44,6 +44,7 @@ $ go build -o PINTU .
 
 
 - Building container image, handle by module github action:
+
 ![image](https://user-images.githubusercontent.com/80587939/172315777-97cc8728-39d8-4c73-84d1-66de60afa88a.png)
 
 - Store to Docker hub as a docker registry
