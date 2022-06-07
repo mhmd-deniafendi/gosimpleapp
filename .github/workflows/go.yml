@@ -91,6 +91,9 @@ jobs:
          location: ${{ env.GKE_ZONE }} 
          project_id: ${{ env.PROJECT_ID }}
 
+    - name: Test
+      run: kubectl get pod -A
+
     - name: kubectl - Google Cloud GKE cluster.
       uses: ameydev/gke-kubectl-action@master
       env:
