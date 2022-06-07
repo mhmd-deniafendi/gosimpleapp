@@ -76,6 +76,14 @@ jobs:
     steps:
     - uses: actions/checkout@master
 
+    # Setup to GCP CLI
+    - name: Setup Google Cloud CLI
+      uses: google-github-actions/auth@v0.4.0
+      env:
+        ACTION_ALLOW_UNSECURE_COMMANDS: true
+      with:
+        credentials_json: ${{ secrets.GKE_SA_KEY }}
+
     - name: Get GKE Credentials
       uses: google-github-actions/get-gke-credentials@v0.4.0
       with:
