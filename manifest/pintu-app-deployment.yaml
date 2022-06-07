@@ -5,14 +5,14 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: pintu-app-deployment
+      app: pintu-app
   template:
     metadata:
       labels:
-        app: pintu-app-deployment
+        app: pintu-app
     spec:
       containers:
-      - name: pintu-app-deployment
+      - name: pintu-app-container
         image: 14022021/web-application:latest
         ports:
         - containerPort: 8080
