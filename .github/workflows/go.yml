@@ -91,15 +91,15 @@ jobs:
          location: ${{ env.GKE_ZONE }} 
          project_id: ${{ env.PROJECT_ID }}
 
-    - name: Test
-      run: kubectl get pod -A
+    - name: Deploy to GKE
+      run: kubectl apply -f manifest/ -n pintu-app-dev 
 
-    - name: kubectl - Google Cloud GKE cluster.
-      uses: ameydev/gke-kubectl-action@master
-      env:
-        project_id: ${{ env.PROJECT_ID }}
-        APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        cluster_name: ${{ env.GKE_CLUSTER }}
-        GKE_ZONE: ${{ env.GKE_ZONE }} 
-      with:
-        args: apply -f manifest/ -n pintu-app-dev    
+    # - name: kubectl - Google Cloud GKE cluster.
+    #   uses: ameydev/gke-kubectl-action@master
+    #   env:
+    #     project_id: ${{ env.PROJECT_ID }}
+    #     APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+    #     cluster_name: ${{ env.GKE_CLUSTER }}
+    #     GKE_ZONE: ${{ env.GKE_ZONE }} 
+    #   with:
+    #     args: apply -f manifest/ -n pintu-app-dev    
