@@ -25,12 +25,12 @@ jobs:
         go-version: 1.18
 
     # Setup to GCP CLI
-    - name: Setup Google Cloud CLI
-      uses: google-github-actions/auth@v0.4.0
-      env:
-        ACTION_ALLOW_UNSECURE_COMMANDS: true
-      with:
-        credentials_json: ${{ secrets.GKE_SA_KEY }}   
+    # - name: Setup Google Cloud CLI
+    #   uses: google-github-actions/auth@v0.4.0
+    #   env:
+    #     ACTION_ALLOW_UNSECURE_COMMANDS: true
+    #   with:
+    #     credentials_json: ${{ secrets.GKE_SA_KEY }}   
 
     # - name: Setup Google Cloud CLI
     #   uses: google-github-actions/setup-gcloud@94337306dda8180d967a56932ceb4ddcf01edae7
@@ -38,17 +38,17 @@ jobs:
     #     service_account_key: ${{ secrets.GKE_SA_KEY }}
     #     project_id: ${{ secrets.PROJECT_ID }}
 
-    - name: Configure Docker
-      run: |-
-        gcloud --quiet auth configure-docker
+    # - name: Configure Docker
+    #   run: |-
+    #     gcloud --quiet auth configure-docker
 
     # Login to GKE
-    - name: Get GKE Credentials
-      uses: google-github-actions/get-gke-credentials@v0.4.0
-      with:
-         cluster_name: assesment-cluster
-         location: asia-southeast1-a
-         project_id: storied-courier-350802
+    # - name: Get GKE Credentials
+    #   uses: google-github-actions/get-gke-credentials@v0.4.0
+    #   with:
+    #      cluster_name: assesment-cluster
+    #      location: asia-southeast1-a
+    #      project_id: storied-courier-350802
 
     # - name: Get GKE Credentials
     #   run: |-
@@ -68,13 +68,19 @@ jobs:
         push: true
         tags: 14022021/web-application:latest
 
-    # Deploy to GKE
+
+  Deploy:
+
+    needs: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
     - name: kubectl - Google Cloud GKE cluster.
       uses: ameydev/gke-kubectl-action@master
       env:
         project_id: ${{ env.PROJECT_ID }}
-        APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        cluster_name: assesment-cluster
-        GKE_ZONE: asia-southeast1-a 
+        APPLICATION_CREDENTIALS: ${{ secrets.GKE_SA_KEY }}
+        cluster_name: ${{ env.GKE_CLUSTER }}
+        GKE_ZONE: ${{ env.GKE_ZONE }} 
       with:
         args: apply -f manifest/ -n pintu-app-dev    
