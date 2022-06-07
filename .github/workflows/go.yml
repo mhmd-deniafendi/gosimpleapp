@@ -79,7 +79,7 @@ jobs:
       uses: ameydev/gke-kubectl-action@master
       env:
         project_id: ${{ env.PROJECT_ID }}
-        APPLICATION_CREDENTIALS: ${{ secrets.GKE_SA_KEY }}
+        APPLICATION_CREDENTIALS: ${{ secrets.APPLICATION_CREDENTIALS }}
         cluster_name: ${{ env.GKE_CLUSTER }}
         GKE_ZONE: ${{ env.GKE_ZONE }} 
       with:
