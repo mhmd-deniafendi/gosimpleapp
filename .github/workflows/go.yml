@@ -73,7 +73,7 @@ jobs:
       uses: ameydev/gke-kubectl-action@master
       env:
         project_id: ${{ secrets.PROJECT_ID }}
-        APPLICATION_CREDENTIALS: ${{ secrets.GKE_SA_KEY }}
+        APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         cluster_name: assesment-cluster
         GKE_ZONE: asia-southeast1-a 
       with:
