@@ -19,7 +19,7 @@
 
 ![image](https://user-images.githubusercontent.com/80587939/172314015-572f7d81-c556-4d1f-b056-22e402ce0d94.png)
 
-3. service http://belajarsre.sytes.net/ = i user https://my.noip.com/
+3. service http://belajarsre.sytes.net/ = i use https://my.noip.com/
 ![image](https://user-images.githubusercontent.com/80587939/172311106-77cfa32f-b9a9-4320-8a31-5cc0c29976eb.png)
 
 4. Tech Stack 
@@ -35,14 +35,19 @@
 ## Explenation
 1. I use this https://github.com/Papagoat/go-bootstrap-boilerplate/tree/master/go-bootstrap/4 repository as a reference 
 2. Create CI/CD
-- I just build, build with this command :
+- I just build, build with this command with dockerfile :
 ```
 $ go build -o PINTU .
 ```
+
+![image](https://user-images.githubusercontent.com/80587939/172316703-bcb18793-c41e-4e4b-9e9d-551db67c6eb7.png)
+
+
 - Building container image, handle by module github action:
 ![image](https://user-images.githubusercontent.com/80587939/172315777-97cc8728-39d8-4c73-84d1-66de60afa88a.png)
 
 - Store to Docker hub as a docker registry
+
 - Deploy to kubernetes cluster: i use googke kubernetes engine
 ![image](https://user-images.githubusercontent.com/80587939/172316178-69a7148c-01cf-469a-8b17-d4ffd922a48b.png)
 
