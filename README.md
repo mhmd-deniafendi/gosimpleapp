@@ -57,3 +57,12 @@ $ go build -o PINTU .
 
 3. DNS Domain: i use https://my.noip.com/
 ![image](https://user-images.githubusercontent.com/80587939/172316331-e887c02b-378d-4d42-841e-2c2dbd423da0.png)
+
+
+
+# Note : in this case i use "pintu-dev" namespace, so you need to create that namespace first manully
+1. login to GKE
+2. Run this Command
+```
+$ kubectl create namespace pintu-dev
+```
