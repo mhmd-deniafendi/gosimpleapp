@@ -18,11 +18,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    # Setup env Go
     - name: Set up Go
       uses: actions/setup-go@v3
       with:
         go-version: 1.18
 
+    # Setup to GCP CLI
     - name: Setup Google Cloud CLI
       uses: google-github-actions/auth@v0.4.0
       env:
@@ -40,6 +42,7 @@ jobs:
       run: |-
         gcloud --quiet auth configure-docker
 
+    # Login to GKE
     - name: Get GKE Credentials
       uses: google-github-actions/get-gke-credentials@v0.4.0
       with:
@@ -51,12 +54,14 @@ jobs:
     #   run: |-
     #     gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE" --project "${{ secrets.PROJECT_ID }}"
 
+    # Login to Docker Hub
     - name: Login to DockerHub
       uses: docker/login-action@v2
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-      
+
+    # Build and PUSH Image  
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
