@@ -28,6 +28,9 @@
 - Docker registrry: docker hub
 - CI/CD: github action path gosimpleapp/.github/workflows/
   note: Github action trigger by push and pull request to main branch
+  
+  ![image](https://user-images.githubusercontent.com/80587939/172317552-7d4b16a8-9659-4db7-9e79-33e949a472e8.png)
+  
 - Container Orchertration: GKE (Google Kubernetes Engine)
 - Service & ingress: service loadbalancer google
 
