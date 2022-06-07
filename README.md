@@ -14,7 +14,9 @@
 
 - d. Deploy to kubernetes cluster (GKE)
 ![image](https://user-images.githubusercontent.com/80587939/172313602-d2019691-ae3a-4f0f-b08f-fd8d9ab1a3dc.png)
+
 ![image](https://user-images.githubusercontent.com/80587939/172313746-2121abfe-ac36-4fbf-8c19-062275542288.png)
+
 ![image](https://user-images.githubusercontent.com/80587939/172314015-572f7d81-c556-4d1f-b056-22e402ce0d94.png)
 
 3. service http://belajarsre.sytes.net/ = i user https://my.noip.com/
@@ -30,3 +32,19 @@
 - Service & ingress: service loadbalancer google
 
 
+## Explenation
+1. I use this https://github.com/Papagoat/go-bootstrap-boilerplate/tree/master/go-bootstrap/4 repository as a reference 
+2. Create CI/CD
+- I just build, build with this command :
+```
+$ go build -o PINTU .
+```
+- Building container image, handle by module github action:
+![image](https://user-images.githubusercontent.com/80587939/172315777-97cc8728-39d8-4c73-84d1-66de60afa88a.png)
+
+- Store to Docker hub as a docker registry
+- Deploy to kubernetes cluster: i use googke kubernetes engine
+![image](https://user-images.githubusercontent.com/80587939/172316178-69a7148c-01cf-469a-8b17-d4ffd922a48b.png)
+
+3. DNS Domain: i use https://my.noip.com/
+![image](https://user-images.githubusercontent.com/80587939/172316331-e887c02b-378d-4d42-841e-2c2dbd423da0.png)
