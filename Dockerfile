@@ -1,11 +1,11 @@
 FROM golang:alpine
-RUN mkdir /app
-RUN apk update && apk add git 
-COPY . /app
 WORKDIR /app
-RUN apk add --no-cache tzdata
+RUN apk update \
+    apk add --no-cache tzdata \
+    apk add git \
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+COPY . /app
 ENV TZ=Asia/Jakarta
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN go mod init PINTU
 RUN go build -o PINTU .
 EXPOSE 8080
