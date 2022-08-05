@@ -39,30 +39,30 @@ jobs:
         tags: 14022021/web-application:latest
 
 
-  Deploy:
+  # Deploy:
 
-    needs: Build
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
+  #   needs: Build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@master
 
-    # Setup ke GCP CLI
-    - name: Setup Google Cloud CLI
-      uses: google-github-actions/auth@v0.4.0
-      env:
-        ACTION_ALLOW_UNSECURE_COMMANDS: true
-      with:
-        credentials_json: ${{ secrets.GKE_SA_KEY }}
+  #   # Setup ke GCP CLI
+  #   - name: Setup Google Cloud CLI
+  #     uses: google-github-actions/auth@v0.4.0
+  #     env:
+  #       ACTION_ALLOW_UNSECURE_COMMANDS: true
+  #     with:
+  #       credentials_json: ${{ secrets.GKE_SA_KEY }}
 
-    # Mengambil credentials GKE
-    - name: Get GKE Credentials
-      uses: google-github-actions/get-gke-credentials@v0.4.0
-      with:
-         cluster_name: ${{ env.GKE_CLUSTER }}
-         location: ${{ env.GKE_ZONE }} 
-         project_id: ${{ env.PROJECT_ID }}
+  #   # Mengambil credentials GKE
+  #   - name: Get GKE Credentials
+  #     uses: google-github-actions/get-gke-credentials@v0.4.0
+  #     with:
+  #        cluster_name: ${{ env.GKE_CLUSTER }}
+  #        location: ${{ env.GKE_ZONE }} 
+  #        project_id: ${{ env.PROJECT_ID }}
 
-    # Deploy ke GKE
-    - name: Deploy to GKE
-      run: kubectl apply -f manifest/ -n pintu-dev
+  #   # Deploy ke GKE
+  #   - name: Deploy to GKE
+  #     run: kubectl apply -f manifest/ -n pintu-dev
   
