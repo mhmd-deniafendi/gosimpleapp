@@ -1,3 +1,3 @@
-module example.com/m/v2
+module github.com/mhmd-deniafendi/gosimpleapp.git
 
 go 1.20
