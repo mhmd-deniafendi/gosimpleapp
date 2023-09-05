@@ -6,7 +6,7 @@ RUN apk update \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 COPY . /app
 ENV TZ=Asia/Jakarta
-RUN go mod init PINTU
-RUN go build -o PINTU .
+RUN go mod init DENIAPP
+RUN go build -o DENIAPP .
 EXPOSE 8080
-CMD ["/app/PINTU"]
+CMD ["/app/DENIAPP"]
