@@ -9,7 +9,7 @@ on:
 env:
   PROJECT_ID: ${{secrets.PROJECT_ID}}
   GKE_CLUSTER: assesment-cluster
-  GKE_ZONE: asia-southeast1-a   
+  GKE_ZONE: asia-southeast2-a   
 
 jobs:
 
