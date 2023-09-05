@@ -2,14 +2,14 @@ name: CI/CD Pipeline Go - Google Kubernetes Engine
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 env:
   PROJECT_ID: ${{secrets.PROJECT_ID}}
   GKE_CLUSTER: assesment-cluster
-  GKE_ZONE: asia-southeast2-a   
+  GKE_ZONE: asia-southeast2-a
 
 jobs:
 
@@ -17,14 +17,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-
     # Setup env Go
     - name: Set up Go
+
       uses: actions/setup-go@v3
       with:
         go-version: 1.18
 
-    - name: Test
+    - name: Unit Test
       run: go test -v ./...
 
     # Login to Docker Hub
@@ -42,30 +42,30 @@ jobs:
         tags: 14022021/web-application:0.0.1
 
 
-  # Deploy:
+# Deploy:
 
-  #   needs: Build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - uses: actions/checkout@master
+#   needs: Build
+#   runs-on: ubuntu-latest
+#   steps:
+#   - uses: actions/checkout@master
 
-  #   # Setup ke GCP CLI
-  #   - name: Setup Google Cloud CLI
-  #     uses: google-github-actions/auth@v0.4.0
-  #     env:
-  #       ACTION_ALLOW_UNSECURE_COMMANDS: true
-  #     with:
-  #       credentials_json: ${{ secrets.GKE_SA_KEY }}
+#   # Setup ke GCP CLI
+#   - name: Setup Google Cloud CLI
+#     uses: google-github-actions/auth@v0.4.0
+#     env:
+#       ACTION_ALLOW_UNSECURE_COMMANDS: true
+#     with:
+#       credentials_json: ${{ secrets.GKE_SA_KEY }}
 
-  #   # Mengambil credentials GKE
-  #   - name: Get GKE Credentials
-  #     uses: google-github-actions/get-gke-credentials@v0.4.0
-  #     with:
-  #        cluster_name: ${{ env.GKE_CLUSTER }}
-  #        location: ${{ env.GKE_ZONE }} 
-  #        project_id: ${{ env.PROJECT_ID }}
+#   # Mengambil credentials GKE
+#   - name: Get GKE Credentials
+#     uses: google-github-actions/get-gke-credentials@v0.4.0
+#     with:
+#        cluster_name: ${{ env.GKE_CLUSTER }}
+#        location: ${{ env.GKE_ZONE }} 
+#        project_id: ${{ env.PROJECT_ID }}
 
-  #   # Deploy ke GKE
-  #   - name: Deploy to GKE
-  #     run: kubectl apply -f manifest/ -n pintu-dev
-  
+#   # Deploy ke GKE
+#   - name: Deploy to GKE
+#     run: kubectl apply -f manifest/ -n pintu-dev
+
